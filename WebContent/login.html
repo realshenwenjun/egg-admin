@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>登录</title>
+<link href="css/common.css" rel="stylesheet" type="text/css">
+	<link rel="Shortcut Icon" href="./image/logo.ico" />
+</head>
+
+<body>
+<div class="topCon loginBg">
+  <!--导航-->
+  <div class="topLogo">
+  	<div class="topLogoCon">
+  		<span>
+  			<a href="index.html"><img src="images/logo.png" /></a>
+	  	</span>  
+	  	<ul>
+	  		<li>
+	  			<a href="index.html">首页</a>
+	  		</li>
+	  		<li>
+	  			<a href="aboutUs.html">关于我们</a>
+	  		</li>
+	  		<li>
+	  			<a href="contact.html">联系我们</a>
+	  		</li>
+	  		<li>
+	  			<a href="pages/index.jsp">进入管理</a>
+	  		</li>
+	  		<li>
+	  			<a href="register.html">注册</a>/
+	  			<a href="login.html">登录</a>
+	  		</li>
+	  	</ul>	
+  	</div>
+  </div>
+  <!--banner-->
+  <div class="banner">
+	<div class="loginCon">
+		<h2>
+			<span class="loginD h2Title">登录</span>
+			<span class="loginZ"><a href="register.html">注册</a></span>
+		</h2>
+		<ul>
+			<form role="form" method="post" action="" id="loginForm">
+		     <li class="deng">
+		     	<span class="deng-text">手机</span>
+		     	<input class="ipt1 ipt" type="text" name="email"/>
+		     	<span class="erro ds"></span>
+		     </li>
+		     <li class="deng">
+		     	<span class="deng-text">密码</span>
+		     	<input class="ipt2 ipt" type="password" name="password"/>
+		     	<span class="erro ds"></span>
+		     </li>
+		     <li>
+		     	<span class="remener"><input class="" type="checkbox" name="password"/>记住密码</span>
+		     	<span class="gotPass"><a href="getpassword.html" target="_self">忘记密码？</a></span>
+		     </li>
+		    
+		     <li>
+		     	<a href="javaScript:login();" class="btnLogin">登录</a>
+		     </li>
+		     <li>
+		     	<p class="hezuo">使用第三方账号登录</p>
+		     	<p class="heImg">
+		     		<a href="" target="_self" class=""><img src="images/img_003.png" /></a>
+		     		<a href="" target="_self"><img src="images/img_004.png" /></a>
+		     	</p>
+		     </li>
+		     </form>
+		</ul>
+	</div>
+  </div>
+</div>
+<!--banner_4-->
+<div class="banner">
+	<img src="images/loginImg.jpg" />
+</div>
+<div class="colorBg3">	
+	<!--底部信息-->
+	<div class="colorBg4">
+		<!--底部导航-->
+		<div class="w1160 footNavCon">
+			<ul>
+				<li>
+	  				<a href="aboutUs.html" target="_self">关于我们</a>
+		  		</li>
+		  		<li>
+	  				<a href="help.html" target="_self">帮助中心</a>
+		  		</li>
+		  		<li>
+		  			<a href="contact.html" target="_self">联系我们</a>
+		  		</li>
+		  		<li>
+	  				<a href="joinUs.html" target="_self">加入我们</a>
+		  		</li>
+		  		<li>
+	  				<a href="service.html" target="_self">联系客服</a>
+		  		</li>
+		  		<li>
+	  				<a href="#" target="_self">版权声明</a>
+		  		</li>
+		  		<li class="last">
+	  				<a href="#" target="_self">法律声明</a>
+		  		</li>
+			</ul>
+		</div>
+		<!--底部友情链接-信息-->
+		<div class="w1160 footCon">
+			<ul class="footNav">
+				<li><a href="#" target="_self">合作伙伴</a></li>
+				<li><a href="#" target="_self">语文网</a></li>
+				<li><a href="#" target="_self">中国艺术职业教育学会</a></li>
+				<li><a href="#" target="_self">中央音乐学院</a></li>
+				<li><a href="#" target="_self">清华大学</a></li>
+				<li><a href="#" target="_self">北京航空航天大学</a></li>
+				<li><a href="#" target="_self">中央美术大学</a></li>
+			</ul>
+			<ul class="footContact">
+				<li>联系方式 QQ：3363652717</li>
+				<li>微信：蛋生云</li>
+				<li>电话：64015290</li>
+				<li>E-mail:dsy@danshengyun.com</li>
+			</ul>
+		</div>
+		<!--底部版权-->
+		<div class="w1160 banquan">
+			Copyright(C) 2004 - 2010 ic98.com All Rights Reserved          课程内容版权均归本网站所有，未经同意，不得转载本站所有信息
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery.min.js" ></script>
+<script type="text/javascript">
+	function login(){
+		var phone = $("input[name='email']").val();
+		var password = $("input[name='password']").val();
+		if(phone == ""){
+			$("input[name='email']").focus();
+			return;
+		}
+		if(password == ""){
+			$("input[name='password']").focus();
+			return;
+		}
+		$.ajax({
+                type: "POST",
+                url: "/admin/user/login.do",
+                data:{phone:phone,password:password},
+                dataType: "json",
+                success: function(data){
+                   if(data.code == 000){
+                   		window.location.href="/admin/pages/index.jsp";
+                   		return;
+                   }else{
+                   		alert(data.message);
+                   		return;
+                   }
+                }
+            });
+	}
+	$(function(){
+		$("input[name='email']").val("");
+		$("input[name='password']").val("");
+		$('.deng-text').click(function(){
+			$(this).hide();
+			$(this).next('input').focus();
+		});
+		$('.ipt').change(function(){
+			if ($(this).val() != '') {
+				$(this).prev().hide();
+			};
+		});
+		$('.ipt').focus(function(){
+			$(this).prev().hide();
+		});
+		$('.ipt').focusout(function(){
+			if ($(this).val() == '') {
+				$(this).prev().show();
+			};
+		});
+		$("input[name='password']").keydown(function(e){
+            if(e.keyCode==13){
+                login();
+            }
+        });
+	});
+</script>
+</html>

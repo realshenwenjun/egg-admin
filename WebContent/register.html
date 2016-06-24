@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>注册</title>
+<link href="css/common.css" rel="stylesheet" type="text/css">
+	<link rel="Shortcut Icon" href="./image/logo.ico" />
+</head>
+
+<body style="background:#e8e8e8;">
+<div class="topCon">
+  <!--导航-->
+  <div class="topLogo">
+  	<div class="topLogoCon">
+  		<span>
+  			<a href="index.html" target="_self"><img src="images/logo.png" /></a>
+	  	</span>  
+	  	<ul>
+	  		<li>
+	  			<a href="index.html" target="_self">首页</a>
+	  		</li>
+	  		<li>
+	  			<a href="aboutUs.html" target="_self">关于我们</a>
+	  		</li>
+	  		<li>
+	  			<a href="contact.html" target="_self">联系我们</a>
+	  		</li>
+	  		<li>
+	  			<a href="pages/index.jsp" target="_self">进入管理</a>
+	  		</li>
+	  		<li>
+	  			<a href="register.html" target="_self">注册</a>/
+	  			<a href="login.html" target="_self">登录</a>
+	  		</li>
+	  	</ul>	
+  	</div>
+  </div>
+  <!--banner-->
+  <div class="banner">
+	<div class="registerCon">
+		<h2>
+			<span class="loginD"><a href="login.html">登录</a></span>
+			<span class="loginZ h2Title">注册</span>
+		</h2>
+		<ul>
+			<form role="form" method="post" action="/admin/user/regist.do" id="registForm">
+		     <li class="deng">
+		     	<span class="deng-text" >手机</span>
+		     	<input class="ipt1 ipt" type="text" name="email"/>
+		     	<span class="erro ds">邮箱/手机</span>
+		     </li>
+		     <li class="deng">
+		     	<span class="deng-text">密码</span>
+		     	<input class="ipt2 ipt" type="password" name="password1"/>
+		     	<span class="erro ds">请输入密码</span>
+		     </li>
+		     <li class="deng">
+		     	<span class="deng-text">确认密码</span>
+		     	<input class="ipt2 ipt" type="password" name="password2"/>
+		     	<span class="erro ds">请输入密码</span>
+		     </li>
+		     <li>
+		     	<a href="javaScript:regist();" class="btnLogin">注册</a>
+		     </li>
+		     <li>
+		     	<p class="hezuo">使用第三方账号登录</p>
+		     	<p class="heImg">
+		     		<a href="" target="_self" class=""><img src="images/img_003.png" /></a>
+		     		<a href="" target="_self"><img src="images/img_004.png" /></a>
+		     	</p>
+		     </li>
+		     </form>
+		</ul>
+	</div>
+  </div>
+</div>
+<div class="colorBg3">	
+	<!--底部信息-->
+	<div class="colorBg4">
+		<!--底部导航-->
+		<div class="w1160 footNavCon">
+			<ul>
+				<li>
+	  				<a href="aboutUs.html" target="_self">关于我们</a>
+		  		</li>
+		  		<li>
+	  				<a href="help.html" target="_self">帮助中心</a>
+		  		</li>
+		  		<li>
+		  			<a href="contact.html" target="_self">联系我们</a>
+		  		</li>
+		  		<li>
+	  				<a href="joinUs.html" target="_self">加入我们</a>
+		  		</li>
+		  		<li>
+	  				<a href="service.html" target="_self">联系客服</a>
+		  		</li>
+		  		<li>
+	  				<a href="#" target="_self">版权声明</a>
+		  		</li>
+		  		<li class="last">
+	  				<a href="#" target="_self">法律声明</a>
+		  		</li>
+			</ul>
+		</div>
+		<!--底部友情链接-信息-->
+		<div class="w1160 footCon">
+			<ul class="footNav">
+				<li><a href="#" target="_self">合作伙伴</a></li>
+				<li><a href="#" target="_self">语文网</a></li>
+				<li><a href="#" target="_self">中国艺术职业教育学会</a></li>
+				<li><a href="#" target="_self">中央音乐学院</a></li>
+				<li><a href="#" target="_self">清华大学</a></li>
+				<li><a href="#" target="_self">北京航空航天大学</a></li>
+				<li><a href="#" target="_self">中央美术大学</a></li>
+			</ul>
+			<ul class="footContact">
+				<li>联系方式 QQ：3363652717</li>
+				<li>微信：蛋生云</li>
+				<li>电话：64015290</li>
+				<li>E-mail:dsy@danshengyun.com</li>
+			</ul>
+		</div>
+		<!--底部版权-->
+		<div class="w1160 banquan">
+			Copyright(C) 2004 - 2010 ic98.com All Rights Reserved          课程内容版权均归本网站所有，未经同意，不得转载本站所有信息
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery.min.js" ></script>
+<script type="text/javascript">
+	function regist(){
+		var phone = $("input[name='email']").val();
+		var password1 = $("input[name='password1']").val();
+		var password2 = $("input[name='password2']").val();
+		if(phone == ""){
+			$("input[name='email']").focus();
+			return;
+		}
+		if(password1 == ""){
+			$("input[name='password1']").focus();
+			return;
+		}
+		if(password2 == ""){
+			$("input[name='password2']").focus();
+			return;
+		}
+		if(password1 != password2){
+			alert("两次密码不一样");
+			return;
+		}
+		$.ajax({
+                type: "POST",
+                url: "/admin/user/regist.do",
+                data:{phone:phone,password:password1,type:3},
+                dataType: "json",
+                success: function(data){
+                   if(data.code == 000){
+                   		alert("注册成功，请到登录页登录");
+                   		window.location.href="/admin/login.html";
+                   		return;
+                   }else{
+                   		alert(data.message);
+                   		return;
+                   }
+                }
+            });
+	}
+	$(function(){
+		$("input[name='email']").val("");
+		$("input[name='password1']").val("");
+		$('.deng-text').click(function(){
+			$(this).hide();
+			$(this).next('input').focus();
+		});
+		$('.ipt').change(function(){
+			if ($(this).val() != '') {
+				$(this).prev().hide();
+			};
+		});
+		$('.ipt').focus(function(){
+			$(this).prev().hide();
+		});
+		$('.ipt').focusout(function(){
+			if ($(this).val() == '') {
+				$(this).prev().show();
+			};
+		});
+	});
+</script>
+</html>
