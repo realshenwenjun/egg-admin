@@ -26,7 +26,7 @@ public abstract class Base {
 	public Logger logger;
 	public static ObjectMapper objectMapper;
 	public JsonNode rootNode = null;
-	public static String server = "Http://101.201.212.96/dskj";
+	public static String server = "http://www.danshengyun.com/dskj";
 
 	public static String defaultPage = "index";
 
