@@ -1,0 +1,39 @@
+p,ul,li{margin: 0; padding: 0; list-style: none;}
+/* 评论框 */
+.comment{width: 750px;height: 108px; background-color: #e8e8e8; border: 1px solid #000000;margin-left: 80px;margin-top: 5px; position: relative; display: none;}
+.comment .head-face{width: 10%; height: 120px; float: left; text-align: center;}
+.comment .head-face img{width: 50px; height: 50px; border-radius: 50%;}
+.comment .head-face p{font-size: 12px; font-family: "微软雅黑";}
+.comment .content{width: 100%; height: 108px;}
+
+.cont-box{ width: 700px; height: 70px; background-color: #fff;position:absolute; left: 25px; top: 5px;}
+.cont-box .text{ text-indent: 100px; width: 97%; height: 86%; padding: 5px 10px;font-family: "微软雅黑"; font-size: 12px; resize:none; border: none;  outline: none; float: left;}
+
+.tools-box{height: 30px; position:absolute; left: 20px;bottom:0px;}
+.tools-box .operator-box-btn{ width: 100%; height: 30px; float: left; margin-left: 4px; }
+.tools-box .operator-box-btn .face-icon{display: block; float: left;margin-left: 5px; font-family: "微软雅黑"; font-size: 22px; color: #808080;  cursor: pointer;}
+.tool-btns{
+	position:absolute; right: 25px;bottom:5px;
+}
+.tool-btns a{
+	display: inline-block;
+	float: right;
+	border: 1px solid #a3a3a3;
+	width: 48px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	margin-left: 20px;
+	color: #000;
+	border-radius: 3px;
+}
+.consu{
+	position: relative;
+}
+.consu span{
+	position: absolute;
+	left: 2px;
+	top: 2px;
+	font-size: 12px;
+	color: #000;
+}

@@ -1,0 +1,192 @@
+body{font-family:"Microsoft Yahei",微软雅黑,arial;margin:0;color:#666;font-size:12px;background:#FFF;}
+ul,dl,dt,dd,p,h2,form{margin:0;padding:0;font-weight:normal;}
+li{list-style-type:none;}
+a{text-decoration:none;}
+img{border:none;border-width:0;}
+input,button,select,textarea{outline:none}
+em, i, u {
+    font-style: normal;
+}
+a:hover{ color: #f4a01c;}
+/* 清除浮 动*/
+.clearfix,.clear{*zoom: 1;}
+.clearfix:after,.clear:after{display: table; content: ''; clear: both;}
+.pr{position: relative;}
+.pa{position: absolute;}
+.imgBg1{ background: url(../images/topBg.jpg) no-repeat center top;}
+.imgBg2{ background: url(../images/l_img_2.png) no-repeat center top;}
+.topCon{ width: 100%; margin:auto; height:auto;}
+.topLogo{width: 100%;height: 49px;margin: auto;overflow: hidden;background: url(../images/topBg.png) repeat-x 0 0;}
+.topLogoCon{ width: 1160px; margin: auto; height: 49px;  overflow: hidden;}
+.topLogoCon span{ width: 41px; height: 49px; display: block; float: left; margin-left: 80px;}
+.topLogoCon ul{ width: auto; height: 49px; float: right; margin-left: 30px;}
+.topLogoCon ul li{ width: auto height49px; line-height: 49px; float: left; color: #fff; margin: auto 70px;}
+.topLogoCon ul li a{ color: #fff; font-size: 12px;}
+.topLogoCon ul li a:hover{ color: #f4a01c;}
+
+.banner{width: 1160px; height: auto; margin: auto; overflow: hidden;}
+.banner .ios-downs{
+	width: 125px;
+	height: 36px;
+	display: inline-block;
+	left: 448px; 
+	bottom: 65px; background:#fff;opacity:0;filter:alpha(opacity=0);
+}
+.banner .android-downs{
+	width: 125px;
+	height: 36px;
+	display: inline-block;
+	left: 630px;
+	bottom: 65px;background:#fff;opacity:0;filter:alpha(opacity=0);
+
+}
+.banner .ios-downs2{
+	width: 215px;
+	height: 50px;
+	display: inline-block;
+	left: 260px;
+	bottom: 170px;background:#000;opacity:0;filter:alpha(opacity=0);
+
+}
+.banner .android-downs2{
+	width: 215px;
+	height: 50px;
+	display: inline-block;
+	left: 562px;
+	bottom: 170px;background:#fff;opacity:0;filter:alpha(opacity=0);
+
+}
+
+.colorBg1{ background: #1ca9eb; width: 100%; height:700px; overflow: hidden; margin-bottom: 10px;}
+.colorBg2{ background: #ffa658; width: 100%; height:704px; overflow: hidden; margin-bottom: 10px;}
+.colorBg3{ background: #ff7a85; width: 100%; height:auto; overflow: hidden; }
+.colorBg4{ background:#454545; width: 100%; height: 286px; margin-bottom: auto; overflow: hidden;}
+
+
+.w1160{ width: 1160px; margin:auto;}
+.w1160 a{color: #e8e8e8;}
+.w1160 a:hover{ color: #f4a01c;}
+.footNavCon{ height: 90px; overflow: hidden; text-align: center;}
+.footNavCon ul li{ height: 30px; display: inline-block;*display:inline;*zoom:1; text-align: center; margin: 30px 0px; background: url(../images/line_bg.png) no-repeat right top; padding: 0px 20px;}
+.footNavCon ul li.last{ background: none;}
+.footNavCon ul li a{ font-size: 16px;}
+
+.footCon{ height: 60px; border-top: solid #fff 1px;border-bottom: solid #fff 1px; padding: 6px 0;}
+.footNav{ text-align: center;}
+.footNav li{ font-size: 14px; line-height: 30px;display: inline-block;*display:inline;*zoom:1; text-align: center;padding: 0px 10px; }
+
+.footContact{ text-align: center;}
+.footContact li{ font-size: 14px; line-height: 25px;display: inline-block;*display:inline;*zoom:1; text-align: center;padding: 0px 15px; color: #e8e8e8;}
+
+.banquan{ color: #e8e8e8; text-align: center; line-height: 30px; font-size: 10px;}
+
+
+.contact{ width: 1160px; margin: auto; background: #fff; padding-bottom: 80px;}
+.conTitle{ height: 119px; line-height: 119px; font-size: 24px; padding-left: 90px; border-bottom: solid 1px #ccc;}
+.conMessage{ padding:5px 50px 120px 90px; width: auto; height: auto;overflow: hidden;}
+.conMessage p{ margin-bottom: 20px;}
+.conCall{ width: 470px; float: left; height: auto; overflow: hidden; font-size: 18px; color: #333; margin-top: 30px;}
+.conMap{ width: 532px; height: 365px; border: solid 1px #ccc; float: right;}
+
+.conImg .ios-downs{
+	width: 215px;
+	height: 50px;
+	display: inline-block;
+	left: 162px;
+	bottom: 59px;background:#fff;opacity:0;filter:alpha(opacity=0);
+}
+.conImg .android-downs{
+	width: 215px;
+	height: 50px;
+	display: inline-block;
+	left: 464px;
+	bottom: 59px;background:#fff;opacity:0;filter:alpha(opacity=0);
+}
+
+.loginBg{background: url(../images/loginBg.jpg) no-repeat center top; height: 740px;}
+.loginCon{ width: 500px; height: 480px; float: right; background: #fff; margin-top: 100px;}
+.loginCon h2,.registerCon h2{ border-bottom: solid #f2f2f2 1px; height: 62px;}
+.h2Title{ border-bottom: 2px #999999 solid;}
+.loginD{ float: left;margin-left: 100px; line-height: 62px; font-size: 18px; width: 130px; display: block; text-align: center;}
+.loginZ{ float: left;margin-left: 60px; line-height: 62px; font-size: 18px; width: 130px; display: block; text-align: center;}
+.loginCon ul,.registerCon ul{  width: 324px; margin:50px auto 50px auto; height: auto;overflow: hidden;}
+.ds{ display: none;}
+.erro{ color:#ff0000; font-size: 12px;}
+.deng{ height: 65px; overflow: hidden; width: auto; position: relative;}
+.ipt{ width: 299px; border: solid 1px #ccc; height:38px; line-height: 38px; padding-left:22px; font-size: 12px; color: #666; }
+.deng-text{
+	width: 268px;
+    height: 42px;
+    line-height: 42px;
+    left: 53px;
+    font-size: 12px;
+    color: #999;
+    position: absolute;
+    z-index: 2;
+    cursor: text;
+}
+.deng-text1{
+	width: 268px;
+    height: 29px;
+    line-height: 29px;
+    left: 53px;
+    font-size: 12px;
+    color: #8b8b8b;
+    position: absolute;
+    z-index: 2;
+    cursor: text;
+	font-size:16px;
+}
+.ipt1{background: url(../images/img_001.png) no-repeat 16px center; box-shadow: none;padding-left:53px; width: 266px; }
+.ipt2{background: url(../images/img_002.png) no-repeat 16px center; box-shadow: none;padding-left:53px;width: 266px;  }
+.rember{ float: left; color: #000;}
+.gotPass{ float: right;}
+.gotPass a{color: #000;}
+.gotPass a:hover{ color: #f4a01c;}
+.btnLogin{ width: 260px; height: 35px; background: #ccc; border-radius: 4px; display: block; margin:47px auto 23px auto; text-align: center; line-height: 35px; color: #fefefe; font-size: 18px;}
+.hezuo{ text-align:center; color: #ccc;}
+.heImg{ text-align: center; margin-top: 15px;}
+.heImg a{ margin:0 27px;}
+
+
+.registerCon ul{ margin-top: 30px!important;}
+.registerCon{ width: 500px; height: 480px;background: #fff; margin:100px auto;}
+.registerCon .deng-text{ left: 50px;}
+.registerCon .btnLogin{  margin:31px auto 23px auto;}
+
+.getpasswordCon h3{ font-size: 24px; color: #838383; padding-top: 50px; padding-left: 34px; font-weight: normal;}
+.getpasswordCon ul{width: 424px; margin:50px auto 50px auto;  }
+.dengT{ float: left; width: 80px; font-size: 18px; line-height: 42px;}
+.dengC{ float: right; width: 325px;}
+.tip{ color: #838383; line-height: 25px;}
+.getpasswordCon .btnLogin{ width: 160px; }
+ .remener{
+ 	vertical-align: middle;
+ }
+  .remener input{
+  	vertical-align: middle;
+  }
+  
+  
+ .a-tab{ width:600px; margin:auto;} 
+ .a-tab li{ width:33.3%; float:left; line-height:32px; text-align:center; border:none!important; color:#8b8b8b; cursor:pointer;}
+ .current{ width:131px; height:32px; background:#00a0e8; color:#fff;border-radius:6px; padding-bottom:0px!important; display:block; margin:auto; }
+ .a-tab-1,.tableL , .a-tab-2{width:600px; margin:auto;}
+ .tableL td{ width:50%; text-align:center; border-bottom:1px solid #ccc; height:104px; line-height:104px; font-size:20px; color:#000;} 
+ .blue{ color:#00a8e8!important; font-size:20px;}
+ .search h2{ font-size:30px; font-weight:normal; color:#8b8b8b; width:550px; margin:auto; text-align:center;}
+ .searchIpt{ border:solid 1px #8b8b8b; width:540px; margin:20px auto; height:29px; position:relative;}
+ .ipts{ width:445px; line-height:26px; border:none!important; padding:0px 10px!important; float:left;}
+  .searchIpt a{ width:50px; height:29px; display:block; background:#ffcc33; float:left; line-height:29px; text-align:center; font-size:20px; color:#8b8b8b;}
+  .numZ{ width:960px!important;}
+   .sportList{ margin-top: 10px;}
+  .sportList ul li{ width: 300px; height: 315px; border: solid 1px #8b8b8b; float: left; margin: 19px 18px;}
+  .sportList ul li .ImgCon{width: 276px; height: 258px; margin:23px auto auto; position: relative; z-index: 1;}
+.sportList ul li .ImgCon .NameImg{ width: 274px; height: 50px; background: url(../images/bgImg23.png) repeat-x 0 0; display: block;line-height: 50px; position: relative; bottom: 53px; color: #fff; text-align: center; font-size: 14px;}
+.sportList ul li .ImgCon .ImgText{ width: 276px; height: 221px; overflow: hidden;}
+.sportList ul li .ImgCon .textCon{ height: 20px; width: 100%; display: block;; line-height: 20px; margin: 10px auto; }
+.redT{ float: left; font-size: 16px; color: #ff0000;}
+.greyT{ float: right; font-size: 14px; color: #8b8b8b;}
+.sportList ul li .ImgA{ height: 29px; border-top: solid 1px #8b8b8b; width: 100%;}
+.bianji{ width: 149px; height: 30px; border-right:solid 1px #8b8b8b; display: block; background: url(../images/bianji.jpg) no-repeat 0 0; float: left; }
+.shanchu{ width: 149px; height: 30px; display: block; background: url(../images/shanchu.jpg) no-repeat 0 0; float: left; }
