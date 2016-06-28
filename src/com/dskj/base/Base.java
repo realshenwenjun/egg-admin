@@ -26,11 +26,7 @@ public abstract class Base {
 	public Logger logger;
 	public static ObjectMapper objectMapper;
 	public JsonNode rootNode = null;
-<<<<<<< HEAD
-	public static String server = "Http://localhost:8080/dskj";
-=======
 	public static String server = "http://www.danshengyun.com/dskj";
->>>>>>> 9e8adeb3f5fbb7821bfa80c228e62563dd2745f4
 
 	public static String defaultPage = "index";
 
