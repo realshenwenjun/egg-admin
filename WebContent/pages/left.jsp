@@ -31,6 +31,9 @@
               <a href="javaScript:" name="ajaxModel" url="/activity/census.do"> 活动统计</a>
             </li>
             <li>
+              <a href="javaScript:" name="ajaxModel" url="/activity/user/sign/list.do"> 报名成功</a>
+            </li>
+            <li>
               <a href="javaScript:" name="ajaxModel" url="/activity/ask/list.do"> 咨询服务</a>
             </li>
             <li>

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.dskj.activity.entity.CancelReason;
 import com.dskj.activity.entity.ChildActivity;
 import com.dskj.activity.entity.ChildActivityAsk;
+import com.dskj.activity.entity.UserActivitySign;
 import com.dskj.base.Base;
 import com.dskj.util.HttpUtil;
 import com.dskj.util.Page;
@@ -352,6 +353,48 @@ public class ActivityController extends Base {
 			request.setAttribute("list", list);
 			request.setAttribute("page", page);
 			return "pages/platforms/activity_feedback_list";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
+	
+	/**
+	 * 活动报名列表
+	 * 
+	 * @param request
+	 * @param response
+	 * @param pageNo
+	 * @param pageSize
+	 * @return
+	 */
+	@RequestMapping(value = "/activity/user/sign/list.do", method = RequestMethod.GET)
+	public String userSignList(HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam(value = "pageNo", defaultValue = "1") int pageNo,
+			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize) {
+		try {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("activityId", 0);
+			map.put("pageNo", (pageNo - 1) * pageSize);
+			map.put("pageSize", pageSize);
+			logger.info(objToString(map));
+			String result = HttpUtil.post(server + "/childActivity/sign/user/list",
+					"childActivity=" + objToString(map));
+			List<UserActivitySign> list = jsonToList(readTree(result, "result"),
+					ArrayList.class, UserActivitySign.class);
+			String resultCount = HttpUtil.post(server + "/childActivity/sign/user/count",
+					"childActivity=" + objToString(map));
+			int count = readTreeAsInt(resultCount, "result");
+			Page page = new Page();
+			page.setPageNo(pageNo);
+			page.setPageSize(pageSize);
+			page.setTotleCount(count);
+			page.setPageCount((count + pageSize - 1) / pageSize);
+			page.setUrl("/activity/user/sign/list.do");
+			request.setAttribute("list", list);
+			request.setAttribute("page", page);
+			return "pages/platforms/activity_sign_list";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
