@@ -105,15 +105,15 @@ public class ActivityController extends Base {
 			map.put("reserveBeginDate", reserveBeginDate);
 			map.put("reserveEndDate", reserveEndDate);
 			logger.info(objToString(map));
-			HttpUtil.post(server + "/childActivity/add",
-					"childActivity=" + objToString(map));
+			HttpUtil.post(server + "/childActivity/add", "childActivity="
+					+ objToString(map));
 			return list(request, response, 1, 10);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "index";
 	}
-	
+
 	/**
 	 * 修改活动
 	 * 
@@ -122,8 +122,8 @@ public class ActivityController extends Base {
 	 * @return
 	 */
 	@RequestMapping(value = "/activity/update.do", method = RequestMethod.POST)
-	public String update(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam(value = "id") int id,
+	public String update(HttpServletRequest request,
+			HttpServletResponse response, @RequestParam(value = "id") int id,
 			@RequestParam(value = "name") String name,
 			@RequestParam(value = "title") String title,
 			@RequestParam(value = "url") String url,
@@ -153,14 +153,15 @@ public class ActivityController extends Base {
 			map.put("reserveBeginDate", reserveBeginDate);
 			map.put("reserveEndDate", reserveEndDate);
 			logger.info(objToString(map));
-			HttpUtil.post(server + "/childActivity/update",
-					"childActivity=" + objToString(map));
+			HttpUtil.post(server + "/childActivity/update", "childActivity="
+					+ objToString(map));
 			return list(request, response, 1, 10);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "index";
 	}
+
 	/**
 	 * 活动统计
 	 * 
@@ -171,7 +172,8 @@ public class ActivityController extends Base {
 	 * @return
 	 */
 	@RequestMapping(value = "/activity/census.do", method = RequestMethod.GET)
-	public String census(HttpServletRequest request, HttpServletResponse response,
+	public String census(HttpServletRequest request,
+			HttpServletResponse response,
 			@RequestParam(value = "pageNo", defaultValue = "1") int pageNo,
 			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize) {
 		try {
@@ -200,6 +202,7 @@ public class ActivityController extends Base {
 		}
 		return "index";
 	}
+
 	/**
 	 * 活动咨询服务
 	 * 
@@ -210,7 +213,8 @@ public class ActivityController extends Base {
 	 * @return
 	 */
 	@RequestMapping(value = "/activity/ask/list.do", method = RequestMethod.GET)
-	public String getActivityMyAsk(HttpServletRequest request, HttpServletResponse response,
+	public String getActivityMyAsk(HttpServletRequest request,
+			HttpServletResponse response,
 			@RequestParam(value = "pageNo", defaultValue = "1") int pageNo,
 			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize) {
 		try {
@@ -218,12 +222,14 @@ public class ActivityController extends Base {
 			map.put("pageNo", (pageNo - 1) * pageSize);
 			map.put("pageSize", pageSize);
 			logger.info(objToString(map));
-			String result = HttpUtil.post(server + "/childActivity/my/ask/list",
-					"childActivity=" + objToString(map));
-			List<ChildActivityAsk> list = jsonToList(readTree(result, "result"),
-					ArrayList.class, ChildActivityAsk.class);
-			String resultCount = HttpUtil.post(server + "/childActivity/my/ask/count",
-					"");
+			String result = HttpUtil.post(
+					server + "/childActivity/my/ask/list", "childActivity="
+							+ objToString(map));
+			List<ChildActivityAsk> list = jsonToList(
+					readTree(result, "result"), ArrayList.class,
+					ChildActivityAsk.class);
+			String resultCount = HttpUtil.post(server
+					+ "/childActivity/my/ask/count", "");
 			int count = readTreeAsInt(resultCount, "result");
 			Page page = new Page();
 			page.setPageNo(pageNo);
@@ -239,6 +245,7 @@ public class ActivityController extends Base {
 		}
 		return "index";
 	}
+
 	/**
 	 * 管理员回复活动咨询
 	 * 
@@ -248,7 +255,8 @@ public class ActivityController extends Base {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/activity/ask/answer/add.do", method = RequestMethod.POST)
-	public void addAskAnswer(HttpServletRequest request, HttpServletResponse response,
+	public void addAskAnswer(HttpServletRequest request,
+			HttpServletResponse response,
 			@RequestParam(value = "askId") int askId,
 			@RequestParam(value = "context") String context) {
 		try {
@@ -265,6 +273,7 @@ public class ActivityController extends Base {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * 查询亲子活动
 	 * 
@@ -274,8 +283,8 @@ public class ActivityController extends Base {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/activity/get.do", method = RequestMethod.GET)
-	public String getActivity(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam(value = "id") int id) {
+	public String getActivity(HttpServletRequest request,
+			HttpServletResponse response, @RequestParam(value = "id") int id) {
 		try {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("id", id);
@@ -284,7 +293,8 @@ public class ActivityController extends Base {
 			logger.info(objToString(map));
 			String result = HttpUtil.post(server + "/childActivity/get",
 					"childActivity=" + objToString(map));
-			ChildActivity childActivity = stringToObj(readTree(result, "result"), ChildActivity.class);
+			ChildActivity childActivity = stringToObj(
+					readTree(result, "result"), ChildActivity.class);
 			request.setAttribute("activity", childActivity);
 			return "pages/platforms/activity_update";
 		} catch (Exception e) {
@@ -292,6 +302,7 @@ public class ActivityController extends Base {
 		}
 		return "index";
 	}
+
 	/**
 	 * 删除亲子活动
 	 * 
@@ -300,19 +311,20 @@ public class ActivityController extends Base {
 	 * @return
 	 */
 	@RequestMapping(value = "/activity/delete.do", method = RequestMethod.GET)
-	public void deleteActivity(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam(value = "id") int id) {
+	public void deleteActivity(HttpServletRequest request,
+			HttpServletResponse response, @RequestParam(value = "id") int id) {
 		try {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("ids", Arrays.asList(id));
 			logger.info(objToString(map));
-			HttpUtil.post(server + "/childActivity/delete",
-					"childActivity=" + objToString(map));
+			HttpUtil.post(server + "/childActivity/delete", "childActivity="
+					+ objToString(map));
 			write(response, null, null, null, null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * 活动反馈列表
 	 * 
@@ -332,17 +344,20 @@ public class ActivityController extends Base {
 			map.put("pageNo", (pageNo - 1) * pageSize);
 			map.put("pageSize", pageSize);
 			logger.info(objToString(map));
-			String result = HttpUtil.post(server + "/childActivity/feedback/list",
-					"childActivity=" + objToString(map));
-			List<ChildActivityAsk> list = jsonToList(readTree(result, "result"),
-					ArrayList.class, ChildActivityAsk.class);
-			String resultCount = HttpUtil.post(server + "/childActivity/feedback/count",
-					"");
+			String result = HttpUtil.post(server
+					+ "/childActivity/feedback/list", "childActivity="
+					+ objToString(map));
+			List<ChildActivityAsk> list = jsonToList(
+					readTree(result, "result"), ArrayList.class,
+					ChildActivityAsk.class);
+			String resultCount = HttpUtil.post(server
+					+ "/childActivity/feedback/count", "");
 			int count = readTreeAsInt(resultCount, "result");
-			String censusResult = HttpUtil.post(server + "/childActivity/feedback/census",
-					"childActivity=");
-			List<CancelReason> censusList = jsonToList(readTree(censusResult, "result"),
-					ArrayList.class, CancelReason.class);
+			String censusResult = HttpUtil.post(server
+					+ "/childActivity/feedback/census", "childActivity=");
+			List<CancelReason> censusList = jsonToList(
+					readTree(censusResult, "result"), ArrayList.class,
+					CancelReason.class);
 			request.setAttribute("censusList", censusList);
 			Page page = new Page();
 			page.setPageNo(pageNo);
@@ -358,7 +373,7 @@ public class ActivityController extends Base {
 		}
 		return "index";
 	}
-	
+
 	/**
 	 * 活动报名列表
 	 * 
@@ -379,12 +394,15 @@ public class ActivityController extends Base {
 			map.put("pageNo", (pageNo - 1) * pageSize);
 			map.put("pageSize", pageSize);
 			logger.info(objToString(map));
-			String result = HttpUtil.post(server + "/childActivity/sign/user/list",
-					"childActivity=" + objToString(map));
-			List<UserActivitySign> list = jsonToList(readTree(result, "result"),
-					ArrayList.class, UserActivitySign.class);
-			String resultCount = HttpUtil.post(server + "/childActivity/sign/user/count",
-					"childActivity=" + objToString(map));
+			String result = HttpUtil.post(server
+					+ "/childActivity/sign/user/list", "childActivity="
+					+ objToString(map));
+			List<UserActivitySign> list = jsonToList(
+					readTree(result, "result"), ArrayList.class,
+					UserActivitySign.class);
+			String resultCount = HttpUtil.post(server
+					+ "/childActivity/sign/user/count", "childActivity="
+					+ objToString(map));
 			int count = readTreeAsInt(resultCount, "result");
 			Page page = new Page();
 			page.setPageNo(pageNo);
