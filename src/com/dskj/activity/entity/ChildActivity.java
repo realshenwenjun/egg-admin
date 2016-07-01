@@ -17,8 +17,8 @@ public class ChildActivity implements Serializable {
 	private int activityType;
 	private String title;
 	private String name;
-	private BigDecimal price;
-	private BigDecimal oldPrice;
+	private Double price;
+	private Double oldPrice;
 	private int saleCount;
 	private String thumbImg;
 	private String adverImg;
@@ -85,19 +85,19 @@ public class ChildActivity implements Serializable {
 		this.name = name;
 	}
 
-	public BigDecimal getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
-	public BigDecimal getOldPrice() {
+	public Double getOldPrice() {
 		return oldPrice;
 	}
 
-	public void setOldPrice(BigDecimal oldPrice) {
+	public void setOldPrice(Double oldPrice) {
 		this.oldPrice = oldPrice;
 	}
 

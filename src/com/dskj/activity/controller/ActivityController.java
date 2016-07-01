@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -127,8 +128,8 @@ public class ActivityController extends Base {
 			@RequestParam(value = "name") String name,
 			@RequestParam(value = "title") String title,
 			@RequestParam(value = "url") String url,
-			@RequestParam(value = "oldPrice") String oldPrice,
-			@RequestParam(value = "price") String price,
+			@RequestParam(value = "oldPrice") Double oldPrice,
+			@RequestParam(value = "price") Double price,
 			@RequestParam(value = "shortDetail") String shortDetail,
 			@RequestParam(value = "thumbImg") String thumbImg,
 			@RequestParam(value = "detail") String detail,
@@ -147,7 +148,7 @@ public class ActivityController extends Base {
 			map.put("shortDetail", shortDetail);
 			map.put("thumbImg", thumbImg);
 			map.put("adverImg", thumbImg);
-			map.put("detail", detail);
+			map.put("detail", Base64.encodeBase64String(detail.getBytes("UTF-8")));
 			map.put("beginDate", beginDate);
 			map.put("endDate", endDate);
 			map.put("reserveBeginDate", reserveBeginDate);
