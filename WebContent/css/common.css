@@ -188,5 +188,5 @@ a:hover{ color: #f4a01c;}
 .redT{ float: left; font-size: 16px; color: #ff0000;}
 .greyT{ float: right; font-size: 14px; color: #8b8b8b;}
 .sportList ul li .ImgA{ height: 29px; border-top: solid 1px #8b8b8b; width: 100%;}
-.bianji{ width: 149px; height: 30px; border-right:solid 1px #8b8b8b; display: block; background: url(../images/bianji.jpg) no-repeat 0 0; float: left; }
-.shanchu{ width: 149px; height: 30px; display: block; background: url(../images/shanchu.jpg) no-repeat 0 0; float: left; }
+.bianji{ width: 50%; height: 30px; border-right:solid 1px #8b8b8b; display: block; background: url(../images/bianji.jpg) no-repeat 0 0; float: left; }
+.shanchu{ width: 50%; height: 30px; display: block; background: url(../images/shanchu.jpg) no-repeat 0 0; float: left; }
