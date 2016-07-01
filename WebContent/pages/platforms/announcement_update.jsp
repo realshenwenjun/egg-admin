@@ -13,13 +13,25 @@
 <title>编辑公告</title>
 <link href="../css/common.css" rel="stylesheet" type="text/css">
 <link href="../css/admin.css" rel="stylesheet" type="text/css">
+<script charset="utf-8" src="../kindeditor/kindeditor-all-min.js"></script>
+<script charset="utf-8" src="../kindeditor/lang/zh-CN.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("textarea[name='content']").val("${announcement.content}");
+	var options = {
+		filterMode : false,
+		uploadJson : "/admin/image/upload.do",
+		extraFileUploadParams : {
+                        fileDir : "imageRoom"
+                },
+         fillDescAfterUploadImage : true,
+         filePostName : "file"
+	};
+	KindEditor.ready(function(K) {
+		window.editor = K.create('textarea[name="content"]',options);
 		/**
 		 **
 		 */
 		$("a[name='updateAnnouncement']").click(function() {
+			window.editor.sync();
 			var typeId = $("input[name='typeId']:checked").val();
 			var title = $("input[name='title']").val();
 			var annoImage = $("input[name='annoImage']").val();
@@ -122,7 +134,7 @@
 			<h3 class="title">正文</h3>
 
 			<div class="kindeditors">
-				<textarea name="content" width="1024"></textarea>
+				<textarea name="content" style="width:1000px;height:300px;">${announcement.content}</textarea>
 			</div>
 			<h3 class="title"></h3>
 

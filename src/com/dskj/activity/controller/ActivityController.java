@@ -100,7 +100,7 @@ public class ActivityController extends Base {
 			map.put("shortDetail", shortDetail);
 			map.put("thumbImg", thumbImg);
 			map.put("adverImg", thumbImg);
-			map.put("detail", detail);
+			map.put("detail", Base64.encodeBase64String(detail.getBytes("UTF-8")));
 			map.put("beginDate", beginDate);
 			map.put("endDate", endDate);
 			map.put("reserveBeginDate", reserveBeginDate);

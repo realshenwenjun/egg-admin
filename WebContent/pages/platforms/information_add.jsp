@@ -13,12 +13,25 @@
 <title>发布资讯</title>
 <link href="../css/common.css" rel="stylesheet" type="text/css">
 <link href="../css/admin.css" rel="stylesheet" type="text/css">
+<script charset="utf-8" src="../kindeditor/kindeditor-all-min.js"></script>
+<script charset="utf-8" src="../kindeditor/lang/zh-CN.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
+	var options = {
+		filterMode : false,
+		uploadJson : "/admin/image/upload.do",
+		extraFileUploadParams : {
+                        fileDir : "imageRoom"
+                },
+         fillDescAfterUploadImage : true,
+         filePostName : "file"
+	};
+	KindEditor.ready(function(K) {
+	window.editor = K.create('textarea[name="context"]',options);
 		/**
 		 **
 		 */
 		$("a[name='addInformation']").click(function() {
+			window.editor.sync();
 			var path = $("input[name='path']").val();
 			var context = $("textarea[name='context']").val();
 			var title = $("textarea[name='title']").val();
@@ -104,7 +117,7 @@
 			</div>
 			<h3 class="title">正文</h3>
 			<div class="kindeditors">
-				<textarea name="context" width="1024"></textarea>
+				<textarea name="context" style="width:1000px;height:300px;"></textarea>
 			</div>
 			<div class="btns-paper">
 				<a href="javaScript:" name="addInformation" class="submit">保存</a>

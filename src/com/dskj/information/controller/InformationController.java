@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -87,7 +88,7 @@ public class InformationController extends Base {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("imgUrls", Arrays.asList(path));
 			map.put("title", title);
-			map.put("context", context);
+			map.put("context", Base64.encodeBase64String(context.getBytes("UTF-8")));
 			map.put("userId", ((HashMap<String, Object>) request.getSession()
 					.getAttribute("user")).get("id"));
 			logger.info(objToString(map));
@@ -117,7 +118,7 @@ public class InformationController extends Base {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("imgUrl", path);
 			map.put("title", title);
-			map.put("context", context);
+			map.put("context", Base64.encodeBase64String(context.getBytes("UTF-8")));
 			map.put("id", id);
 			logger.info(objToString(map));
 			HttpUtil.post(server + "/information/update",

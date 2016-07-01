@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -77,7 +78,7 @@ public class AnnouncementControll extends Base {
 			map.put("typeId", typeId);
 			map.put("title", title);
 			map.put("annoImage", annoImage);
-			map.put("content", content);
+			map.put("content", Base64.encodeBase64String(content.getBytes("UTF-8")));
 			map.put("userId", ((HashMap<String, Object>) request.getSession()
 					.getAttribute("user")).get("id"));
 			logger.info(objToString(map));
@@ -147,7 +148,7 @@ public class AnnouncementControll extends Base {
 			map.put("typeId", typeId);
 			map.put("title", title);
 			map.put("annoImage", annoImage);
-			map.put("content", content);
+			map.put("content", Base64.encodeBase64String(content.getBytes("UTF-8")));
 			logger.info(objToString(map));
 			HttpUtil.post(server + "/announcement/update",
 					"announcement=" + objToString(map));
