@@ -19,6 +19,7 @@ public class ChildActivity implements Serializable {
 	private String name;
 	private Double price;
 	private Double oldPrice;
+	private String contact;
 	private int saleCount;
 	private String thumbImg;
 	private String adverImg;
@@ -242,4 +243,11 @@ public class ChildActivity implements Serializable {
 		this.activityReserveId = activityReserveId;
 	}
 
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
 }
