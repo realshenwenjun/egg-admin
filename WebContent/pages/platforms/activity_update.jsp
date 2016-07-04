@@ -29,6 +29,7 @@
 			window.editor.sync();
 			var name = $("input[name='name']").val();
 			var title = $("input[name='title']").val();
+			var contact = $("input[name='contact']").val();
 			var url = $("input[name='url']").val();
 			var oldPrice = $("input[name='oldPrice']").val();
 			var price = $("input[name='price']").val();
@@ -46,6 +47,7 @@
 					id : "${activity.id}",
 					name : name,
 					title : title,
+					contact : contact,
 					url : url,
 					oldPrice : oldPrice,
 					price : price,
@@ -111,6 +113,10 @@
 		<div class="inpour clearfix">
 			<label class="w95 fl">活动标题：</label>
 			<input type="text" class="inputst w565 fl" name="title" value="${activity.title }" placeholder="">
+		</div>
+		<div class="inpour clearfix">
+			<label class="w95 fl">客服电话：</label>
+			<input type="text" class="inputst w565 fl" name="contact" value="${activity.contact }" placeholder="">
 		</div>
 		<div class="inpour clearfix">
 			<label class="w95 fl">活动外部链接：</label>
