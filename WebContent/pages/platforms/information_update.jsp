@@ -33,8 +33,9 @@
 		$("a[name='updateInformation']").click(function() {
 			window.editor.sync();
 			var path = $("input[name='path']").val();
+			var title = $("input[name='title']").val();
 			var context = $("textarea[name='context']").val();
-			var title = $("textarea[name='title']").val();
+			var summary = $("textarea[name='summary']").val();
 			$.ajax({
 				type : "POST",
 				url : "/admin/information/update.do",
@@ -42,6 +43,7 @@
 					id : "${information.id}",
 					path : path,
 					title : title,
+					summary : summary,
 					context : context
 				},
 				dataType : "html",
@@ -91,7 +93,10 @@
 			<h3 class="big-title">编辑资讯</h3>
 
 			<h3 class="small-title">编辑图文消息</h3>
-
+			<div class="inpour clearfix">
+				<label class="w95 fl">标题：</label>
+				<input type="text" class="inputst w565 fl" name="title" value="${information.title }" placeholder="">
+			</div>
 			<h3 class="title">封面图片</h3>
 
 			<div class="img-all">
@@ -116,7 +121,7 @@
 			</div>
 			<h3 class="title">摘要</h3>
 			<div class="kindeditors">
-				<textarea name="title" width="1024" value="${information.title }">${information.title }</textarea>
+				<textarea name="summary" width="1024" value="${information.summary }">${information.summary }</textarea>
 			</div>
 			<h3 class="title">正文</h3>
 			<div class="kindeditors">

@@ -73,8 +73,6 @@ public class InformationController extends Base {
 	 * 
 	 * @param request
 	 * @param response
-	 * @param pageNo
-	 * @param pageSize
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
@@ -83,11 +81,13 @@ public class InformationController extends Base {
 			HttpServletResponse response,
 			@RequestParam(value = "path") String path,
 			@RequestParam(value = "context") String context,
-			@RequestParam(value = "title") String title) {
+			@RequestParam(value = "title") String title,
+			@RequestParam(value = "summary") String summary) {
 		try {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("imgUrls", Arrays.asList(path));
 			map.put("title", title);
+			map.put("summary", summary);
 			map.put("context", Base64.encodeBase64String(context.getBytes("UTF-8")));
 			map.put("userId", ((HashMap<String, Object>) request.getSession()
 					.getAttribute("user")).get("id"));
@@ -113,11 +113,13 @@ public class InformationController extends Base {
 			@RequestParam(value = "id") int id,
 			@RequestParam(value = "path") String path,
 			@RequestParam(value = "context") String context,
-			@RequestParam(value = "title") String title) {
+			@RequestParam(value = "title") String title,
+			@RequestParam(value = "summary") String summary) {
 		try {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("imgUrl", path);
 			map.put("title", title);
+			map.put("summary", summary);
 			map.put("context", Base64.encodeBase64String(context.getBytes("UTF-8")));
 			map.put("id", id);
 			logger.info(objToString(map));
@@ -134,8 +136,6 @@ public class InformationController extends Base {
 	 * 
 	 * @param request
 	 * @param response
-	 * @param pageNo
-	 * @param pageSize
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
