@@ -13,13 +13,25 @@
 <title>编辑轮播图</title>
 <link href="../css/common.css" rel="stylesheet" type="text/css">
 <link href="../css/admin.css" rel="stylesheet" type="text/css">
+<script charset="utf-8" src="../kindeditor/kindeditor-all-min.js"></script>
+<script charset="utf-8" src="../kindeditor/lang/zh-CN.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("textarea[name='context']").val("${carousel.context}");
+	var options = {
+		filterMode : false,
+		uploadJson : "/admin/image/upload.do",
+		extraFileUploadParams : {
+			fileDir : "imageRoom"
+		},
+		fillDescAfterUploadImage : true,
+		filePostName : "file"
+	};
+	KindEditor.ready(function(K) {
+		window.editor = K.create('textarea[name="context"]',options);
 		/**
 		 **
 		 */
 		$("a[name='updateCarousel']").click(function() {
+			window.editor.sync();
 			var id = $("input[name='id']").val();
 			var val = $("input[name='val']").val();
 			var path = $("input[name='path']").val();
@@ -121,7 +133,7 @@
 			<h3 class="title">正文</h3>
 
 			<div class="kindeditors">
-				<textarea name="context" width="1024"></textarea>
+				<textarea name="context" style="width:1000px;height:300px;">${carousel.context}</textarea>
 			</div>
 			<h3 class="title"></h3>
 
