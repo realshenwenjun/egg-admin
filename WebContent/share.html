@@ -75,11 +75,35 @@
         var r = window.location.search.substr(1).match(reg);  //匹配目标参数
         if (r != null) return unescape(r[2]); return null; //返回参数值
     }
-    $(function(){
+	function getUrl() {
         var url = getUrlParam("u");
         url = url.replace("@","?").replace(new RegExp("!","g"),"&");
-        $("a[name='goShare']").attr("href",url);
+		return url;
+    }
+    $(document).ready(function(){
+        $("a[name='goShare']").click(function(){
+			window.location.href=getUrl();
+			open();
+		});
+		if (/MicroMessenger/i.test(navigator.userAgent)) {
+			alert("点击右上角，在浏览器中打开");//这是微信平台下浏览器
+		}else if(/QQ/i.test(navigator.userAgent)){
+			$("a[name='goShare']").attr('href',getUrl());
+		}else {
+			$("a[name='goShare']").trigger("click");
+		}	
     });
+	function open(){
+            var timeout;     
+			function try_to_open_app() {
+				timeout = setTimeout(function(){
+				window.location.href="/";
+				console.log(22)
+				   }, 10);
+			}
+			
+			try_to_open_app();
+        }
 </script>
 <!-- jQuery Easing -->
 <script src="share_js/jquery.easing.1.3.js"></script>
