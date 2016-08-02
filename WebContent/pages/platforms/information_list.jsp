@@ -61,20 +61,22 @@
 			});
 		});
 		$("a[name='deleteInformation']").click(function() {
-			var $a = $(this);
-			var id = $(this).attr("key");
-			$.ajax({
-			type : "GET",
-			url : "/admin/information/delete.do?id="+id,
-			dataType : "json",
-			success : function(data) {
-				if (data.success) {
-						$a.parent("p").parent("li").hide();
-					} else {
-						alert("删除失败");
+			if(confirm("确认删除")) {
+				var $a = $(this);
+				var id = $(this).attr("key");
+				$.ajax({
+					type: "GET",
+					url: "/admin/information/delete.do?id=" + id,
+					dataType: "json",
+					success: function (data) {
+						if (data.success) {
+							$a.parent("p").parent("li").hide();
+						} else {
+							alert("删除失败");
+						}
 					}
+				});
 			}
-			});
 		});
 	});
 </script>

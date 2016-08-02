@@ -105,20 +105,22 @@
 			});
     	});
     	$("a[name='deleteInstitution']").click(function(){
-    		var deleteInstitution = $(this);
-			var institutionId = deleteInstitution.attr("key");
-	       $.ajax({
-			type : "GET",
-			url : "/admin/institution/delete.do?institutionId="+institutionId,
-			dataType : "json",
-			success : function(data) {
-				if(data.success){
-					deleteInstitution.parent("li").remove();
-				}else{
-					alert(data.result);
-				}
-			   }
-			});
+			if(confirm("确认删除")) {
+				var deleteInstitution = $(this);
+				var institutionId = deleteInstitution.attr("key");
+				$.ajax({
+					type: "GET",
+					url: "/admin/institution/delete.do?institutionId=" + institutionId,
+					dataType: "json",
+					success: function (data) {
+						if (data.success) {
+							deleteInstitution.parent("li").remove();
+						} else {
+							alert(data.result);
+						}
+					}
+				});
+			}
     	});
 	});
 </script>

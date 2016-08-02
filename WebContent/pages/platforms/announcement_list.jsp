@@ -63,20 +63,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		});
 		$("a[name='deleteAnnouncement']").click(function() {
-			var $a = $(this);
-			var url = $a.attr("url");
-			$.ajax({
-				type : "GET",
-				url : "/admin" + url,
-				dataType : "json",
-				success : function(data) {
-					if (data.success) {
-						$a.parent("div").parent("li").hide();
-					} else {
-						alert("删除失败");
+			if(confirm("确认删除")) {
+				var $a = $(this);
+				var url = $a.attr("url");
+				$.ajax({
+					type: "GET",
+					url: "/admin" + url,
+					dataType: "json",
+					success: function (data) {
+						if (data.success) {
+							$a.parent("div").parent("li").hide();
+						} else {
+							alert("删除失败");
+						}
 					}
-				}
-			});
+				});
+			}
 		});
 		$("a[name='updateAnnouncement']").click(function() {
 			var $a = $(this);
