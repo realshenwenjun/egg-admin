@@ -11,7 +11,7 @@
 <body>
 <div class="w1200">
 	<div class="waper fr">
-		<h3 class="big-title">活动反馈</h3>
+		<h3 class="big-title">信息反馈</h3>
 		<h3 class="title">意见留言</h3>
 		<div class="message-list clearfix">
 			<ul class="clearfix">

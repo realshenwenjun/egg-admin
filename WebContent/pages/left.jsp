@@ -65,6 +65,14 @@
             </li>
           </ul>
         </li>
+        <li>
+          <a href="#"> 信息反馈<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li>
+              <a href="javaScript:" name="ajaxModel" url="/user/infoback/list.do"> 意见留言</a>
+            </li>
+          </ul>
+        </li>
       </c:if>
     </ul>
   </div>

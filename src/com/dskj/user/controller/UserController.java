@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.dskj.activity.entity.ChildActivityAsk;
 import com.dskj.base.Base;
 import com.dskj.sms.controller.SMSController;
 import com.dskj.user.entity.UserEntity;
@@ -419,4 +420,46 @@ public class UserController extends Base {
 			e.printStackTrace();
 		}
 	}
+	/**
+     * 意见留言
+     *
+     * @param request
+     * @param response
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping(value = "/user/infoback/list.do", method = RequestMethod.GET)
+    public String getUserInfoBackList(HttpServletRequest request,
+                                   HttpServletResponse response,
+                                   @RequestParam(value = "pageNo", defaultValue = "1") int pageNo,
+                                   @RequestParam(value = "pageSize", defaultValue = "5") int pageSize) {
+        try {
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("pageNo", (pageNo - 1) * pageSize);
+            map.put("pageSize", pageSize);
+            logger.info(objToString(map));
+            String result = HttpUtil.post(
+                    server + "/infoback/list", "infoback="
+                            + objToString(map));
+            List<UserInfoBack> list = jsonToList(
+                    readTree(result, "result"), ArrayList.class,
+                    UserInfoBack.class);
+            String resultCount = HttpUtil.post(server
+                    + "/infoback/count", "");
+            int count = readTreeAsInt(resultCount, "result");
+            Page page = new Page();
+            page.setPageNo(pageNo);
+            page.setPageSize(pageSize);
+            page.setTotleCount(count);
+            page.setPageCount((count + pageSize - 1) / pageSize);
+            page.setUrl("/user/infoback/list.do");
+            request.setAttribute("list", list);
+            request.setAttribute("page", page);
+            return "pages/platforms/infoback_list";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "index";
+    }
 }
