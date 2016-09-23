@@ -33,6 +33,7 @@
 		$("a[name='addCarousel']").click(function() {
 			window.editor.sync();
 			var val = $("input[name='val']").val();
+			val = val.replace(/&/g,"@");
 			var path = $("input[name='path']").val();
 			var title = $("input[name='title']").val();
 			 if (path == null || path == "") {

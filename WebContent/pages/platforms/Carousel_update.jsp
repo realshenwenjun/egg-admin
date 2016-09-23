@@ -34,6 +34,7 @@
 			window.editor.sync();
 			var id = $("input[name='id']").val();
 			var val = $("input[name='val']").val();
+			val = val.replace(/&/g,"@");
 			var path = $("input[name='path']").val();
 			var title = $("input[name='title']").val();
 			 if (path == null || path == "") {
