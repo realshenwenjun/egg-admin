@@ -29,6 +29,8 @@ public class LoginFilter implements AdminFilterIface, InitializingBean {
 			return null;
 		if (url.contains("share.do"))
 			return null;
+		if (url.contains("dl.do"))
+			return null;
 		if (url.contains(".do") || url.contains(".jsp")) {
 			Object o = ((HttpServletRequest) request).getSession()
 					.getAttribute("user");

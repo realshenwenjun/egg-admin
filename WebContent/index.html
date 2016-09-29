@@ -37,8 +37,8 @@
   </div>
   <!--banner-->
   <div class="banner pr">
-	<a href="" class="ios-downs pa"></a>
-	<a href="" class="android-downs pa"></a>
+	<a href="https://itunes.apple.com/cn/app/dan-sheng/id1078513050?mt=8" class="ios-downs pa"></a>
+	<a href="javaScript:" class="android-downs pa" id="downAndroid"></a>
 	<img src="images/img_0.png" />
   </div>
 </div>
@@ -116,5 +116,30 @@
 	</div>
 </div>
 </body>
+<script type="text/javascript" src="js/jquery.min.js" ></script>
+<script type="text/javascript">
+	//判断访问终端
+	var browser = {
+		versions : function () {
+			var u = navigator.userAgent;
+			return {
+				ios : !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+				android : u.indexOf('Android') > -1 || u.indexOf('Adr') > -1, //android终端
+				weixin : u.indexOf('MicroMessenger') > -1 //是否微信
+			};
+		}(),
+		language : (navigator.browserLanguage || navigator.language).toLowerCase()
+	};
+	$(document).ready(function () {
+		var android = "http://w.gdown.baidu.com/data/wisegame/40a7b751fdb63e93/dansheng_63.apk?f=m1101&source=s1001&ala=";
+		$("#downAndroid").click(function(){
+			if(browser.versions.weixin){
+				alert("点击右上角用浏览器打开");
+				return;
+			}
+			window.location = android;
+		});
+	});
+</script>
 
 </html>
