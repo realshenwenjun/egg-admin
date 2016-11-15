@@ -20,10 +20,10 @@ import com.dskj.util.Page;
 
 @Controller
 public class InstitutionController extends Base {
-	
-	
+
 	/**
 	 * 机构列表
+	 * 
 	 * @param request
 	 * @param response
 	 */
@@ -41,17 +41,18 @@ public class InstitutionController extends Base {
 			logger.info(objToString(map));
 			String result = HttpUtil.post(server + "/institution/list",
 					"institution=" + objToString(map));
-			List<InstitutionWithPropa> list = jsonToList(readTree(result, "result"),
-					ArrayList.class, InstitutionWithPropa.class);
+			List<InstitutionWithPropa> list = jsonToList(
+					readTree(result, "result"), ArrayList.class,
+					InstitutionWithPropa.class);
 			String resultCount = HttpUtil.post(server + "/institution/count",
-					"institution="+objToString(map));
+					"institution=" + objToString(map));
 			int count = readTreeAsInt(resultCount, "result");
 			Page page = new Page();
 			page.setPageNo(pageNo);
 			page.setPageSize(pageSize);
 			page.setTotleCount(count);
 			page.setPageCount((count + pageSize - 1) / pageSize);
-			page.setUrl("/institution/list.do?key="+key);
+			page.setUrl("/institution/list.do?key=" + key);
 			request.setAttribute("list", list);
 			request.setAttribute("page", page);
 			request.setAttribute("key", key);
@@ -62,27 +63,65 @@ public class InstitutionController extends Base {
 		}
 		return "index";
 	}
-	
+
+	/**
+	 * 添加机构
+	 * 
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value = "/institution/add.do", method = RequestMethod.POST)
+	public String addInstitution(
+			HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam(value = "logo", defaultValue = "") String logo,
+			@RequestParam(value = "name", defaultValue = "") String name,
+			@RequestParam(value = "address", defaultValue = "") String address,
+			@RequestParam(value = "summary", defaultValue = "") String summary,
+			@RequestParam(value = "courseType", defaultValue = "") String courseType) {
+		try {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("name", name);
+			map.put("summary", summary);
+			map.put("phone", "");
+			map.put("password", "");
+			map.put("regionId", 0);
+			map.put("logo", logo);
+			logger.info(objToString(map));
+			HttpUtil.post(server + "/institution/add", "institution="
+					+ objToString(map));
+
+			HttpUtil.post(server + "/institution/update/info", "institution="
+					+ objToString(map));
+			return getInstitutionList(request, response, 1, 5, "");
+		} catch (Exception e) {
+			e.printStackTrace();
+			write(response, false, 911, e.getMessage(), null);
+		}
+		return "index";
+	}
+
 	/**
 	 * 删除机构
+	 * 
 	 * @param request
 	 * @param response
 	 */
 	@RequestMapping(value = "/institution/delete.do", method = RequestMethod.GET)
-	public void deleteInstitution(HttpServletRequest request,
+	public void deleteInstitution(
+			HttpServletRequest request,
 			HttpServletResponse response,
 			@RequestParam(value = "institutionId", defaultValue = "") String institutionId) {
 		try {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("institutionId", institutionId);
 			logger.info(objToString(map));
-			String result = HttpUtil.post(server
-					+ "/institution/delete", "institution="
-					+ objToString(map));
+			String result = HttpUtil.post(server + "/institution/delete",
+					"institution=" + objToString(map));
 			String message = readTree(result, "result");
-			if(message == null || "".equals(message) || "null".equals(message)){
+			if (message == null || "".equals(message) || "null".equals(message)) {
 				write(response, null, null, null, null);
-			}else{
+			} else {
 				write(response, false, null, "删除失败", message);
 			}
 		} catch (Exception e) {

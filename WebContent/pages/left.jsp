@@ -47,6 +47,9 @@
             <li>
               <a href="javaScript:" name="ajaxModel" url="/institution/list.do"> 机构监测</a>
             </li>
+            <li>
+              <a href="javaScript:" name="ajaxModel" url="/pages/platforms/institution_add.jsp"> 添加机构</a>
+            </li>
           </ul>
         </li>
         <li>
