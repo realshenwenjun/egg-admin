@@ -14,6 +14,7 @@
 <link href="../css/common.css" rel="stylesheet" type="text/css">
 <link href="../css/admin.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/region.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		/**
@@ -27,6 +28,7 @@
 			var tel = $("input[name='tel']").val();
 			var teacherCount = $("input[name='teacherCount']").val();
 			var summary = $("textarea[name='summary']").val();
+			var regionId = $("select[name='city']").val();
 			$.ajax({
 				type : "POST",
 				url : "/admin/institution/add.do",
@@ -37,11 +39,18 @@
 					address : address,
 					tel : tel,
 					teacherCount : teacherCount,
-					courseType : courseType
+					courseType : courseType,
+					regionId : regionId
 				},
 				dataType : "html",
 				success : function(data) {
-					$("#ajaxJsp").html(data);
+					var ph = "${phone}";
+					if(ph != null && ph != "") {
+						alert("添加成功，请牢记管理员手机号：" + ph)
+						$("#ajaxJsp").html(data);
+					}else{
+						alert("添加失败!");
+					}
 				}
 			});
 		});
@@ -105,6 +114,16 @@
 			<div class="inpour clearfix">
 				<label class="w95 fl">详细地址：</label>
 				<input type="text" class="inputst w565 fl" name="address" value="" placeholder="">
+			</div>
+			<div class="inpour clearfix">
+				<label class="w95 fl">省：</label>
+				<select class="inputst fl" name="province" url="/region/list.do">
+				</select>
+			</div>
+			<div class="inpour clearfix">
+				<label class="w95 fl">市：</label>
+				<select class="inputst fl" name="city">
+				</select>
 			</div>
 			<h3 class="title">机构logo</h3>
 

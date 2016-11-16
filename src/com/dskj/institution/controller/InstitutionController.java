@@ -5,7 +5,6 @@ import com.dskj.institution.entity.InstitutionEntity;
 import com.dskj.institution.entity.InstitutionWithPropa;
 import com.dskj.util.HttpUtil;
 import com.dskj.util.Page;
-import com.dskj.util.StringUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -80,21 +79,24 @@ public class InstitutionController extends Base {
             @RequestParam(value = "summary", defaultValue = "") String summary,
             @RequestParam(value = "courseType", defaultValue = "") String courseType,
             @RequestParam(value = "tel", defaultValue = "") String tel,
-            @RequestParam(value = "teacherCount", defaultValue = "") String teacherCount) {
+            @RequestParam(value = "teacherCount", defaultValue = "0") int teacherCount,
+            @RequestParam(value = "regionId", defaultValue = "0") int regionId) {
         try {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("name", name);
             map.put("summary", summary);
-            map.put("phone", StringUtil.generateUUID8().toLowerCase());
+            long p = System.currentTimeMillis() / 100;
+            map.put("phone", p + "");
             map.put("password", "123456");
             map.put("regionId", 0);
             map.put("logo", logo);
             map.put("pageNo", 0);
             map.put("pageSize", 5);
-            map.put("address",address);
-            map.put("courseType",courseType);
-            map.put("teacherCount",teacherCount);
-            map.put("tel",tel);
+            map.put("address", address);
+            map.put("courseType", courseType);
+            map.put("teacherCount", teacherCount);
+            map.put("tel", tel);
+            map.put("regionId", regionId);
             logger.info(objToString(map));
             HttpUtil.post(server + "/institution/add", "institution="
                     + objToString(map));
@@ -110,6 +112,7 @@ public class InstitutionController extends Base {
                     map.put("id", institutionEntity.getId());
                     HttpUtil.post(server + "/institution/update/info", "institution="
                             + objToString(map));
+                    request.setAttribute("phone", map.get("phone"));
                 }
             }
             return getInstitutionList(request, response, 1, 5, "");
