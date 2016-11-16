@@ -15,25 +15,17 @@
 <link href="../css/admin.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript">
-	var options = {
-		filterMode : false,
-		uploadJson : "/admin/image/upload.do",
-		extraFileUploadParams : {
-                        fileDir : "imageRoom"
-                },
-         fillDescAfterUploadImage : true,
-         filePostName : "file"
-	};
 	$(document).ready(function() {
 		/**
 		 **
 		 */
 		$("a[name='addInformation']").click(function() {
-			window.editor.sync();
-			var logo = $("input[name='logo']").val();
+			var logo = $("input[name='path']").val();
 			var name = $("input[name='name']").val();
 			var address = $("input[name='address']").val();
 			var courseType = $("input[name='courseType']").val();
+			var tel = $("input[name='tel']").val();
+			var teacherCount = $("input[name='teacherCount']").val();
 			var summary = $("textarea[name='summary']").val();
 			$.ajax({
 				type : "POST",
@@ -43,6 +35,8 @@
 					name : name,
 					summary : summary,
 					address : address,
+					tel : tel,
+					teacherCount : teacherCount,
 					courseType : courseType
 				},
 				dataType : "html",
@@ -101,6 +95,14 @@
 				<input type="text" class="inputst w565 fl" name="courseType" value="" placeholder="">
 			</div>
 			<div class="inpour clearfix">
+				<label class="w95 fl">联系方式：</label>
+				<input type="text" class="inputst w565 fl" name="tel" value="" placeholder="">
+			</div>
+			<div class="inpour clearfix">
+				<label class="w95 fl">老师数量：</label>
+				<input type="text" class="inputst w565 fl" name="teacherCount" value="" placeholder="">
+			</div>
+			<div class="inpour clearfix">
 				<label class="w95 fl">详细地址：</label>
 				<input type="text" class="inputst w565 fl" name="address" value="" placeholder="">
 			</div>
@@ -122,7 +124,7 @@
 					</form>
 					<iframe id="exec_target" name="exec_target" style="display:none;"></iframe>
 				</div>
-				<input type="hidden" name="logo" />
+				<input type="hidden" name="path" />
 			</div>
 			
 			<h3 class="title">机构简介</h3>

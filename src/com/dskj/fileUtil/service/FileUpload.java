@@ -32,7 +32,7 @@ public class FileUpload extends Base {
 		fileExtName = fileExtName.substring(fileExtName.lastIndexOf(".") + 1);
 		String filename = StringUtil.generateUUID32() + "." + fileExtName;
 		File tempFile = null;
-		if (osName.contains("window")) {
+		if (osName.toLowerCase().contains("window")) {
 			tempFile = new File(System.getProperties().getProperty(
 					"java.io.tmpdir")
 					+ filename);
