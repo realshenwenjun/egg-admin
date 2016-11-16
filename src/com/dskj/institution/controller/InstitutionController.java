@@ -4,6 +4,7 @@ import com.dskj.base.Base;
 import com.dskj.institution.entity.InstitutionEntity;
 import com.dskj.institution.entity.InstitutionWithPropa;
 import com.dskj.util.HttpUtil;
+import com.dskj.util.MD5Util;
 import com.dskj.util.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -70,7 +71,7 @@ public class InstitutionController extends Base {
      * @param response
      */
     @RequestMapping(value = "/institution/add.do", method = RequestMethod.POST)
-    public String addInstitution(
+    public void addInstitution(
             HttpServletRequest request,
             HttpServletResponse response,
             @RequestParam(value = "logo", defaultValue = "") String logo,
@@ -87,7 +88,7 @@ public class InstitutionController extends Base {
             map.put("summary", summary);
             long p = System.currentTimeMillis() / 100;
             map.put("phone", p + "");
-            map.put("password", "123456");
+            map.put("password", MD5Util.MD5Encode("123456", "UTF-8"));
             map.put("regionId", 0);
             map.put("logo", logo);
             map.put("pageNo", 0);
@@ -112,15 +113,13 @@ public class InstitutionController extends Base {
                     map.put("id", institutionEntity.getId());
                     HttpUtil.post(server + "/institution/update/info", "institution="
                             + objToString(map));
-                    request.setAttribute("phone", map.get("phone"));
+                    write(response, true, null, null, map.get("phone"));
                 }
             }
-            return getInstitutionList(request, response, 1, 5, "");
         } catch (Exception e) {
             e.printStackTrace();
             write(response, false, 911, e.getMessage(), null);
         }
-        return "index";
     }
 
     /**
