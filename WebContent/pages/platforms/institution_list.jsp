@@ -27,7 +27,7 @@
 				<li class="teatcher">
 					<span class="attr1"></span>
 						<c:if test="${!empty institution.logo }">
-							<img src="${institution.logo }" class="fl" width="90" height="80" alt="">
+							<img src="${institution.logo }" class="fl" width="88" height="88" alt="">
 						</c:if>
 						<c:if test="${empty institution.logo }">
 							<img src="../image/logo.png" class="fl" width="88" height="88" alt="">

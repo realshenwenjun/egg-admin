@@ -42,12 +42,12 @@
 					courseType : courseType,
 					regionId : regionId
 				},
-				dataType : "html",
+				dataType : "json",
 				success : function(data) {
-					var ph = "${phone}";
+					var ph = data.result;
 					if(ph != null && ph != "") {
 						alert("添加成功，请牢记管理员手机号：" + ph)
-						$("#ajaxJsp").html(data);
+						goToPage("/institution/list.do");
 					}else{
 						alert("添加失败!");
 					}
