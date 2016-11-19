@@ -24,7 +24,7 @@
 		<div class="message-list clearfix">
         <ul class="gg-list clearfix">
         	<c:forEach items="${list}" var="institution">
-				<li class="teatcher">
+				<li class="teatcher" style="height: auto;">
 					<span class="attr1"></span>
 						<c:if test="${!empty institution.logo }">
 							<img src="${institution.logo }" class="fl" width="88" height="88" alt="">
@@ -37,7 +37,8 @@
 					<span class="sex">课程类别：${institution.courseType }</span>
 					<span class="call">${institution.address }</span>
                     </p>
-                    <a name="deleteInstitution" key="${institution.id }" href="javaScript:" class="blue">删除机构</a>
+                    <a name="deleteInstitution" key="${institution.id }" href="javaScript:" class="blue">删除机构</a> / 
+                    <a name="getPropas" key="${institution.id }" href="javaScript:" class="blue">添加相册</a>
 				</li>
 			</c:forEach>
           </ul>
@@ -121,6 +122,11 @@
 					}
 				});
 			}
+    	});
+    	$("a[name='getPropas']").click(function(){
+			var getPropas = $(this);
+			var institutionId = getPropas.attr("key");
+			goToPage("/institution/propa/list.do?institutionId=" + institutionId);
     	});
 	});
 </script>
